@@ -1,0 +1,16 @@
+version: "4.28.0"
+
+services:
+  mongo-db:
+    image: mongo:6.0.13
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_USER}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_PASS}
+    volumes:
+      # nos va a traer a nuestro proyecto lo que tengaos en mongo
+      - ./mongo:/data/db
+      # puerto interno de mongo, y va a ser el mismo en nuestra computadora
+    ports:
+      - 27017:27017
+      # docker va a bajar la imagen, la va a instalar  y la va a poner a andar. docker compose up -d
